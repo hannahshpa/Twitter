@@ -1,11 +1,14 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -58,6 +61,14 @@ public class TimelineActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    //handle clicking the compose button
+    public void onComposeAction(MenuItem mi) {
+        // handle click here
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context, ComposeActivity.class);
+        startActivityForResult(intent, 1); // brings up the second activity
     }
 
     private void populateTimeline() {
