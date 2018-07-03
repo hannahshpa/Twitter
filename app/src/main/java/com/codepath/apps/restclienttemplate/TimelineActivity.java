@@ -16,6 +16,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -69,6 +70,18 @@ public class TimelineActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         Intent intent = new Intent(context, ComposeActivity.class);
         startActivityForResult(intent, 1); // brings up the second activity
+    }
+
+    // ActivityOne.java, time to handle the result of the sub-activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == 2 && requestCode == 1) {
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("Tweet"));
+            tweets.add(0, tweet);
+            tweetAdapter.notifyItemInserted(0);
+            rvTweets.scrollToPosition(0);
+        }
     }
 
     private void populateTimeline() {

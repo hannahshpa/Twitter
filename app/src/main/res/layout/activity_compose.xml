@@ -7,7 +7,7 @@
     tools:context=".ComposeActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/ivProfileImage"
@@ -19,6 +19,7 @@
         android:text="Tweet"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
+        android:onClick="composeTweet"
         android:textSize="16sp" />
 
     <ImageView
@@ -41,15 +42,15 @@
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="0dp" />
 
-        <EditText
-            android:id="@+id/etTweet"
-            android:layout_width="386dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/button"
-            android:ems="10"
-            android:hint="What's happening?"
-            android:inputType="text|textLongMessage"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="48dp" />
+    <EditText
+        android:id="@+id/etTweet"
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tweetButton"
+        android:ems="10"
+        android:hint="What's happening?"
+        android:inputType="text|textLongMessage"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="48dp" />
 </RelativeLayout>
