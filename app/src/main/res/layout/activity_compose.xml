@@ -42,6 +42,29 @@
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="0dp" />
 
+
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:id="@+id/textContainer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/tweetButton"-->
+        <!--app:counterEnabled="true"-->
+        <!--app:counterMaxLength="140">-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/etTweet"-->
+            <!--android:layout_width="386dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_below="@+id/tweetButton"-->
+            <!--android:ems="10"-->
+            <!--android:hint="What's happening?"-->
+            <!--android:inputType="text|textLongMessage"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_editor_absoluteY="48dp" />-->
+    <!--</android.support.design.widget.TextInputLayout>-->
+
     <EditText
         android:id="@+id/etTweet"
         android:layout_width="386dp"
@@ -53,4 +76,14 @@
         android:inputType="text|textLongMessage"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="48dp" />
+
+    <TextView
+        android:id="@+id/charCount"
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etTweet"
+        android:gravity="right"
+        android:layout_marginRight="5dp"
+        android:maxLength="140" />
 </RelativeLayout>
