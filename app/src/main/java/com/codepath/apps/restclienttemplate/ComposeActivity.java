@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -24,6 +25,10 @@ public class ComposeActivity extends AppCompatActivity {
     private TwitterClient client;
     String itemText;
     private TextView charCount;
+
+    public ImageView ivProfileImage;
+    public TextView tvUsername;
+    TweetAdapter adapter;
 
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -46,6 +51,19 @@ public class ComposeActivity extends AppCompatActivity {
         etTweet = (EditText) findViewById(R.id.etTweet);
         charCount = (TextView) findViewById(R.id.charCount);
         etTweet.addTextChangedListener(mTextEditorWatcher);
+
+        //perform findViewById lookups
+        ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+        tvUsername = (TextView) findViewById(R.id.tvUsername);
+
+//        adapter = Parcels.unwrap(getIntent().getParcelableExtra("adapter"));
+//        //populate the views according to this data
+//        tvUsername.setText(tweet.user.name);
+//
+//        //insert profile pic using Glide
+//        Glide.with(getApplicationContext())
+//                .load(tweet.user.profileImageUrl)
+//                .into(ivProfileImage);
     }
 
     public void composeTweet(View view) {
@@ -82,4 +100,8 @@ public class ComposeActivity extends AppCompatActivity {
     }
 
 
+    public void returnScreen(View view) {
+        Intent intent = new Intent(ComposeActivity.this, TimelineActivity.class);
+        getApplicationContext().startActivity(intent);
+    }
 }

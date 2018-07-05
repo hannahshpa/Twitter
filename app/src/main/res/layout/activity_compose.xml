@@ -10,35 +10,37 @@
         android:id="@+id/tweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ivProfileImage"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/tvUsername"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="13dp"
         android:background="#1DA1F2"
         android:fontFamily="@font/roboto"
+        android:onClick="composeTweet"
+        android:padding="5dp"
         android:text="Tweet"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
-        android:onClick="composeTweet"
         android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/tweetButton"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
         android:background="@android:color/black" />
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="246dp"
+        android:layout_width="192dp"
         android:layout_height="51dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        android:gravity="center_vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginEnd="72dp"
+        android:gravity="right|center_vertical"
         android:text="Username"
-        android:layout_marginLeft="5dp"
         tools:layout_editor_absoluteX="50dp"
         tools:layout_editor_absoluteY="0dp" />
 
@@ -67,10 +69,12 @@
 
     <EditText
         android:id="@+id/etTweet"
-        android:layout_width="386dp"
+        android:layout_width="366dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tweetButton"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="74dp"
         android:ems="10"
         android:hint="What's happening?"
         android:inputType="text|textLongMessage"
@@ -81,9 +85,23 @@
         android:id="@+id/charCount"
         android:layout_width="49dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/etTweet"
+        android:layout_alignBaseline="@+id/tweetButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="117dp"
         android:gravity="right"
-        android:layout_marginRight="5dp"
-        android:maxLength="140" />
+        android:maxLength="140"
+        android:text="140" />
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="returnScreen"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginStart="11dp"
+        app:srcCompat="@drawable/ic_close"
+        tools:ignore="VectorDrawableCompat"
+        />
+
 </RelativeLayout>

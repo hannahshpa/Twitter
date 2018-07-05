@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import cz.msebera.android.httpclient.Header;
 public class TimelineActivity extends AppCompatActivity {
 
     private TwitterClient client;
+    private SwipeRefreshLayout swipeContainer;
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
@@ -55,6 +57,27 @@ public class TimelineActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.ic_launcher_twitter);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
 
     @Override
@@ -69,6 +92,7 @@ public class TimelineActivity extends AppCompatActivity {
         // handle click here
         Context context = getApplicationContext();
         Intent intent = new Intent(context, ComposeActivity.class);
+     //   intent.putExtra("adapter", Parcels.wrap(tweetAdapter));
         startActivityForResult(intent, 1); // brings up the second activity
     }
 
@@ -132,5 +156,43 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void fetchTimelineAsync(int page) {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        // getHomeTimeline is an example endpoint.
+        Log.d("TimelineActivity", "entered fetchTimeline");
+        client.getHomeTimeline(new JsonHttpResponseHandler() {
+            public void onSuccess(JSONArray json) {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                tweetAdapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                ArrayList<Tweet> listTweets = new ArrayList<>();
+                for(int i = 0; i < json.length(); i++) {
+                    //convert each object to a Tweet model
+                    //add that Tweet model to our data source
+                    //notify the adapter that we've added an item
+                    Tweet tweet = null;
+                    try {
+                        tweet = Tweet.fromJSON(json.getJSONObject(i));
+                        listTweets.add(tweet);
+                        tweetAdapter.notifyItemInserted(listTweets.size()-1);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                Log.d("TimelineActivity", "passed for loop");
+                tweets = listTweets;
+                tweetAdapter.addAll(listTweets);
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+            }
+
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
+    }
+
 
 }
