@@ -80,6 +80,15 @@ public class TimelineActivity extends AppCompatActivity {
 
     }
 
+    public void favoriteTweet() {
+
+    }
+
+    public void retweet() {
+
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

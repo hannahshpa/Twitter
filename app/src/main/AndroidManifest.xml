@@ -34,11 +34,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".TimelineActivity" />
-        <activity android:name=".ComposeActivity"></activity>
+        <activity
+            android:name=".ComposeActivity"
+            android:theme="@style/NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".TweetDetailsActivity"></activity>
     </application>
 
 </manifest>

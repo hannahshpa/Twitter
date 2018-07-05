@@ -50,6 +50,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         holder.tvUsername.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
         holder.tvTimestamp.setText(tweet.relativeDate);
+        holder.numRetweets.setText(tweet.numRetweets);
+//        holder.numFaves.setText(tweet.numFaves);
 
 
         //insert profile pic using Glide
@@ -70,6 +72,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         public TextView tvUsername;
         public TextView tvBody;
         public TextView tvTimestamp;
+        public TextView numRetweets;
+        public TextView numFaves;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +83,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
+            numRetweets = (TextView) itemView.findViewById(R.id.numRetweets);
+            numFaves = (TextView) itemView.findViewById(R.id.numFaves);
         }
     }
 

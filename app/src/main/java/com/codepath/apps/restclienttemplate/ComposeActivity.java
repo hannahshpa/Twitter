@@ -36,7 +36,7 @@ public class ComposeActivity extends AppCompatActivity {
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             //This sets a textview to the current length
-            charCount.setText(String.valueOf(s.length()));
+            charCount.setText(String.valueOf(140 - s.length()));
         }
 
         public void afterTextChanged(Editable s) {
@@ -56,14 +56,6 @@ public class ComposeActivity extends AppCompatActivity {
         ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         tvUsername = (TextView) findViewById(R.id.tvUsername);
 
-//        adapter = Parcels.unwrap(getIntent().getParcelableExtra("adapter"));
-//        //populate the views according to this data
-//        tvUsername.setText(tweet.user.name);
-//
-//        //insert profile pic using Glide
-//        Glide.with(getApplicationContext())
-//                .load(tweet.user.profileImageUrl)
-//                .into(ivProfileImage);
     }
 
     public void composeTweet(View view) {
