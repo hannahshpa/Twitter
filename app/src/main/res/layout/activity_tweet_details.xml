@@ -8,18 +8,19 @@
 
     <ImageButton
         android:id="@+id/ivBackButton"
-        android:layout_width="39dp"
-        android:layout_height="35dp"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/ic_arrow_back"
         tools:ignore="VectorDrawableCompat"
         tools:layout_editor_absoluteX="0dp"
+        android:onClick="exitDetails"
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/tvTweet"
-        android:layout_width="103dp"
-        android:layout_height="35dp"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="62dp"
@@ -27,7 +28,7 @@
         android:gravity="center_vertical"
         android:text="Tweet"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -45,11 +46,13 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivBackButton"
-        android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/roboto"
-        android:text="Username" />
+        android:text="Username"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -62,6 +65,46 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto"
         android:text="TextView"
+        android:textColor="@android:color/black"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_below="@+id/tvBody"
+        android:text="Timestamp" />
+
+    <EditText
+        android:id="@+id/tvReply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:hint="Tweet your reply"
+        android:inputType="textMultiLine" />
+
+    <ImageButton
+        android:id="@+id/retweetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvTweet"
+        android:layout_below="@+id/tvTimestamp"
+        android:background="@drawable/retweet_button"
+        android:backgroundTint="@color/tab_selector"
+        app:srcCompat="@drawable/retweet_button" />
+
+    <ImageButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvTimestamp"
+        android:layout_marginEnd="103dp"
+        android:background="@drawable/favorite_button"
+        android:backgroundTint="@color/tab_selector"
+        app:srcCompat="@drawable/favorite_button" />
 
 </RelativeLayout>

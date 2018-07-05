@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -80,14 +81,11 @@ public class TimelineActivity extends AppCompatActivity {
 
     }
 
-    public void favoriteTweet() {
+    public void favoriteTweet(View view) {
+        client.favorite(true, new JsonHttpResponseHandler() {
 
+        });
     }
-
-    public void retweet() {
-
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

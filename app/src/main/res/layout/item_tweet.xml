@@ -55,6 +55,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvBody"
         android:layout_marginEnd="72dp"
+        android:onClick="favoriteTweet"
         android:background="@drawable/favorite_button"
         android:backgroundTint="@color/tab_selector" />
 

@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
-import java.util.List;
+import org.parceler.Parcels;
 
+import java.util.List;
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
     //class variables
@@ -67,7 +69,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     }
 
     //create ViewHolder class that contains the findViewById lookups
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvBody;
@@ -85,6 +87,25 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
             numRetweets = (TextView) itemView.findViewById(R.id.numRetweets);
             numFaves = (TextView) itemView.findViewById(R.id.numFaves);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            //get the position of the item
+            int position = getAdapterPosition();
+            //check if the position is valid and exists in the view
+            if(position != RecyclerView.NO_POSITION) {
+                //get movie at selected position
+                Tweet tweet = mTweets.get(position);
+                //create the intent for this activity
+                Intent intent = new Intent(context, TweetDetailsActivity.class);
+                //serialize the movie using parceler, use its short name as a key
+                intent.putExtra("tweet", Parcels.wrap(tweet));
+
+                //show the activity
+                context.startActivity(intent);
+            }
         }
     }
 
