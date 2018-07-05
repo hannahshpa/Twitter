@@ -42,7 +42,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".TweetDetailsActivity"></activity>
+        <activity android:name=".TweetDetailsActivity"
+            android:theme="@style/NoActionBar"/>
     </application>
 
 </manifest>
