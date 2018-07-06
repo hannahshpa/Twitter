@@ -72,8 +72,8 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="336dp"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivProfileImage"
         android:layout_below="@+id/tvBody"
-        android:layout_centerHorizontal="true"
         android:text="Timestamp" />
 
     <EditText
@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tvTweet"
         android:layout_below="@+id/tvTimestamp"
+        android:onClick="retweet"
         android:background="@drawable/retweet_button"
         android:backgroundTint="@color/tab_selector" />
 
@@ -103,6 +104,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvTimestamp"
         android:layout_marginEnd="67dp"
+        android:onClick="favorite"
         android:background="@drawable/favorite_button"
         android:backgroundTint="@color/tab_selector" />
 
@@ -133,6 +135,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvTimestamp"
         android:layout_marginEnd="176dp"
+        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/retweetButton"
         android:text="0"
         android:textSize="16sp" />

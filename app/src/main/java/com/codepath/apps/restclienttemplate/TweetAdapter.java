@@ -139,6 +139,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                             v.setSelected(true);
                             try {
                                 tweet.numFaves = response.getString("favorite_count");
+                                numFaves.setText(tweet.numFaves);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -175,10 +176,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                             v.setSelected(true);
                             try {
                                 tweet.numRetweets = response.getString("retweet_count");
+                                numRetweets.setText(tweet.numRetweets);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            v.setSelected(true);
                         }
 
                         @Override
