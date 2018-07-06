@@ -134,30 +134,31 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             });
 
 
-//            retweetButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition();
-//                    final Tweet tweet = mTweets.get(position);
-//                    client.retweet(tweet.uid, new JsonHttpResponseHandler() {
-//                        @Override
-//                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                            super.onSuccess(statusCode, headers, response);
-//                            tweet.retweeted = true;
-//                        }
-//
-//                        @Override
-//                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-//                            super.onFailure(statusCode, headers, responseString, throwable);
-//                        }
-//
-//                        @Override
-//                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject object) {
-//                            super.onFailure(statusCode, headers, throwable, object);
-//                        }
-//                    });
-//                }
-//            });
+            retweetButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    int position = getAdapterPosition();
+                    final Tweet tweet = mTweets.get(position);
+                    client.retweet(tweet.uid, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            super.onSuccess(statusCode, headers, response);
+                            tweet.retweeted = true;
+                            v.setSelected(true);
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                            super.onFailure(statusCode, headers, responseString, throwable);
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject object) {
+                            super.onFailure(statusCode, headers, throwable, object);
+                        }
+                    });
+                }
+            });
         }
 
         @Override
