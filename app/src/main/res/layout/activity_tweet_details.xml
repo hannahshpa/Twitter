@@ -72,8 +72,8 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="336dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/ivProfileImage"
         android:layout_below="@+id/tvBody"
+        android:layout_centerHorizontal="true"
         android:text="Timestamp" />
 
     <EditText
@@ -91,8 +91,8 @@
         android:id="@+id/retweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvTweet"
         android:layout_below="@+id/tvTimestamp"
-        android:layout_toEndOf="@+id/tvUsername"
         android:background="@drawable/retweet_button"
         android:backgroundTint="@color/tab_selector" />
 
@@ -102,10 +102,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvTimestamp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginEnd="67dp"
         android:background="@drawable/favorite_button"
         android:backgroundTint="@color/tab_selector" />
 
+    <TextView
+        android:id="@+id/numFaves"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvTimestamp"
+        android:layout_marginEnd="51dp"
+        android:text="0"
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/replyButton"
@@ -114,8 +123,19 @@
         android:layout_below="@+id/tvTimestamp"
         android:layout_toEndOf="@+id/ivBackButton"
         android:background="@drawable/reply_button"
-        android:onClick="sendReply"
-        android:backgroundTint="@color/tab_selector" />
+        android:backgroundTint="@color/tab_selector"
+        android:onClick="sendReply" />
+
+    <TextView
+        android:id="@+id/numRetweets"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvTimestamp"
+        android:layout_marginEnd="176dp"
+        android:layout_toRightOf="@id/retweetButton"
+        android:text="0"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

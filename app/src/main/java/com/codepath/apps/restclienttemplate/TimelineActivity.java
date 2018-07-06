@@ -55,7 +55,7 @@ public class TimelineActivity extends AppCompatActivity {
 
         //setting the twitter logo
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher_twitter);
+        getSupportActionBar().setLogo(R.drawable.twitterbird);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
 

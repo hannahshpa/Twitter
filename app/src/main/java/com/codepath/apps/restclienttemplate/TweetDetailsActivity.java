@@ -25,6 +25,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
     public ImageButton favoriteButton;
     public ImageButton retweetButton;
     public EditText replyText;
+    public TextView numRetweets;
+    public TextView numFaves;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
         favoriteButton = (ImageButton) findViewById(R.id.favoriteButton);
         retweetButton = (ImageButton) findViewById(R.id.retweetButton);
         replyText = (EditText) findViewById(R.id.tvReply);
+        numRetweets = (TextView) findViewById(R.id.numRetweets);
+        numFaves = (TextView) findViewById(R.id.numFaves);
 
 
         //Unwrap the tweet that is passed in via intent, using its simple name as key
@@ -49,6 +53,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
         tvUsername.setText(tweet.user.name);
         tvBody.setText(tweet.body);
         tvTimestamp.setText(tweet.relativeDate);
+        numRetweets.setText(tweet.numRetweets);
+        numFaves.setText(tweet.numFaves);
 
         //insert profile pic using Glide
         Glide.with(getApplicationContext())
