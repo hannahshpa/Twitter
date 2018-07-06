@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -59,6 +60,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         //insert profile pic using Glide
         Glide.with(getApplicationContext())
                 .load(tweet.user.profileImageUrl)
+                .apply(RequestOptions.circleCropTransform())
                 .into(ivProfileImage);
     }
 
