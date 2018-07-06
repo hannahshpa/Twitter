@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
     public TextView tvUsername;
     public TextView tvBody;
     public TextView tvTimestamp;
+    public ImageButton favoriteButton;
+    public ImageButton retweetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvBody = (TextView) findViewById(R.id.tvBody);
         tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
+        favoriteButton = (ImageButton) findViewById(R.id.favoriteButton);
+        retweetButton = (ImageButton) findViewById(R.id.retweetButton);
 
 
         //Unwrap the tweet that is passed in via intent, using its simple name as key
@@ -46,6 +51,8 @@ public class TweetDetailsActivity extends AppCompatActivity {
         Glide.with(getApplicationContext())
                 .load(tweet.user.profileImageUrl)
                 .into(ivProfileImage);
+
+
 
     }
 

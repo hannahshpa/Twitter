@@ -81,17 +81,19 @@ public class TimelineActivity extends AppCompatActivity {
 
     }
 
-    public void favoriteTweet(View view) {
-        client.favorite(true, new JsonHttpResponseHandler() {
-
-        });
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    //handle hitting the reply button
+    public void onReply(View view) {
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context, ComposeActivity.class);
+        //   intent.putExtra("adapter", Parcels.wrap(tweetAdapter));
+        startActivityForResult(intent, 1); // brings up the second activity
     }
 
     //handle clicking the compose button
