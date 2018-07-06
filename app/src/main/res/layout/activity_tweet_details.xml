@@ -84,17 +84,17 @@
         android:layout_alignParentStart="true"
         android:ems="10"
         android:hint="Tweet your reply"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:onClick="sendReply" />
 
     <ImageButton
         android:id="@+id/retweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tvTweet"
         android:layout_below="@+id/tvTimestamp"
+        android:layout_toEndOf="@+id/tvUsername"
         android:background="@drawable/retweet_button"
-        android:backgroundTint="@color/tab_selector"
-        app:srcCompat="@drawable/retweet_button" />
+        android:backgroundTint="@color/tab_selector" />
 
     <ImageButton
         android:id="@+id/favoriteButton"
@@ -102,9 +102,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvTimestamp"
-        android:layout_marginEnd="103dp"
+        android:layout_marginEnd="94dp"
         android:background="@drawable/favorite_button"
-        android:backgroundTint="@color/tab_selector"
-        app:srcCompat="@drawable/favorite_button" />
+        android:backgroundTint="@color/tab_selector" />
+
+
+    <ImageButton
+        android:id="@+id/replyButton"
+        android:layout_width="24dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/tvTimestamp"
+        android:layout_toEndOf="@+id/ivBackButton"
+        android:background="@drawable/reply_button"
+        android:onClick="sendReply"
+        android:backgroundTint="@color/tab_selector" />
+
 
 </RelativeLayout>

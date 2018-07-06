@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +30,9 @@ public class ComposeActivity extends AppCompatActivity {
     public ImageView ivProfileImage;
     public TextView tvUsername;
     TweetAdapter adapter;
+    public Button tweetButton;
+    boolean isReplying;
+    Tweet tweet;
 
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -55,9 +59,16 @@ public class ComposeActivity extends AppCompatActivity {
         //perform findViewById lookups
         ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         tvUsername = (TextView) findViewById(R.id.tvUsername);
+        tweetButton = (Button) findViewById(R.id.tweetButton);
+        isReplying = false;
 
+        //Unwrap the boolean that is passed in via intent
+        if (getIntent().hasExtra("originalTweet")) {
+            Tweet tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("originalTweet"));
+            etTweet.setText("@" + tweet.user.screenName);
+            isReplying = true;
+        }
     }
-
     public void composeTweet(View view) {
         itemText = etTweet.getText().toString();
         client.sendTweet(itemText, new JsonHttpResponseHandler() {

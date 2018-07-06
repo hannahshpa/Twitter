@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
     public TextView tvTimestamp;
     public ImageButton favoriteButton;
     public ImageButton retweetButton;
+    public EditText replyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
         favoriteButton = (ImageButton) findViewById(R.id.favoriteButton);
         retweetButton = (ImageButton) findViewById(R.id.retweetButton);
+        replyText = (EditText) findViewById(R.id.tvReply);
 
 
         //Unwrap the tweet that is passed in via intent, using its simple name as key
@@ -51,9 +54,6 @@ public class TweetDetailsActivity extends AppCompatActivity {
         Glide.with(getApplicationContext())
                 .load(tweet.user.profileImageUrl)
                 .into(ivProfileImage);
-
-
-
     }
 
     public void exitDetails(View view) {
@@ -64,5 +64,12 @@ public class TweetDetailsActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void sendReply(View view) {
+        //handle hitting the reply button
+        tweet.inReply = true;
+        Intent intent = new Intent(this, ComposeActivity.class);
+        intent.putExtra("originalTweet", Parcels.wrap(tweet));
+        this.startActivity(intent); // brings up the second activity
 
+    }
 }

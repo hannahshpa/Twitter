@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/tvBody"
-        android:layout_width="wrap_content"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvUsername"
         android:layout_marginLeft="5dp"
@@ -80,15 +80,25 @@
         android:textSize="16sp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/replyButton"
         android:layout_width="24dp"
         android:layout_height="26dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvBody"
-        android:onClick="onReply"
         android:layout_marginStart="72dp"
         android:background="@drawable/reply_button"
-        android:backgroundTint="@color/tab_selector" />
+        android:backgroundTint="@color/tab_selector"
+        android:onClick="onReply" />
+
+    <TextView
+        android:id="@+id/replyCount"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/replyButton"
+        android:text="0"
+        android:textSize="16sp"
+        android:layout_marginLeft="5dp"/>
 
 
 </RelativeLayout>

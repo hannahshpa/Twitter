@@ -23,6 +23,9 @@ public class Tweet {
     public String numRetweets;
     public boolean favorited;
     public boolean retweeted;
+    public boolean inReply;
+    public long replyId;
+    public String replyCount;
 
     //deserialize the JSON data
     public static Tweet fromJSON(JSONObject jsonObject) throws JSONException {
@@ -38,6 +41,9 @@ public class Tweet {
         tweet.numRetweets = jsonObject.getString("retweet_count");
         tweet.favorited = jsonObject.getBoolean("favorited");
         tweet.retweeted = jsonObject.getBoolean("retweeted");
+//        tweet.replyId = jsonObject.getLong("in_reply_to_status_id");
+        tweet.inReply = false;
+  //      tweet.replyCount = jsonObject.getString("reply_count");
         return tweet;
     }
 

@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
@@ -63,6 +64,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         holder.tvTimestamp.setText(tweet.relativeDate);
         holder.numRetweets.setText(tweet.numRetweets);
         holder.numFaves.setText(tweet.numFaves);
+        holder.replyCount.setText(tweet.replyCount);
 
 
         //insert profile pic using Glide
@@ -87,6 +89,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         public TextView numFaves;
         public ImageButton favoriteButton;
         public ImageButton retweetButton;
+        public ImageButton replyButton;
+        public TextView replyCount;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -100,7 +104,24 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             numFaves = (TextView) itemView.findViewById(R.id.numFaves);
             favoriteButton = (ImageButton) itemView.findViewById(R.id.favoriteButton);
             retweetButton = (ImageButton) itemView.findViewById(R.id.retweetButton);
+            replyButton = (ImageButton) itemView.findViewById(R.id.replyButton);
+            replyCount = (TextView) itemView.findViewById(R.id.replyCount);
             itemView.setOnClickListener(this);
+
+            replyButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    replyButton.setSelected(true);
+                    //handle hitting the reply button
+                    int position = getAdapterPosition();
+                    final Tweet tweet = mTweets.get(position);
+                    tweet.inReply = true;
+                    Intent intent = new Intent(context, ComposeActivity.class);
+                    intent.putExtra("originalTweet", Parcels.wrap(tweet));
+                    context.startActivity(intent); // brings up the second activity
+                }
+            });
 
             favoriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,6 +135,11 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                             super.onSuccess(statusCode, headers, response);
                             tweet.favorited = true;
                             v.setSelected(true);
+                            try {
+                                tweet.numFaves = response.getString("favorite_count");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             Log.d("TweetAdapter", "successful");
 
                         }
@@ -144,6 +170,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             super.onSuccess(statusCode, headers, response);
                             tweet.retweeted = true;
+                            v.setSelected(true);
+                            try {
+                                tweet.numRetweets = response.getString("retweet_count");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                             v.setSelected(true);
                         }
 

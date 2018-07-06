@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -88,20 +87,11 @@ public class TimelineActivity extends AppCompatActivity {
         return true;
     }
 
-    //handle hitting the reply button
-    public void onReply(View view) {
-        Context context = getApplicationContext();
-        Intent intent = new Intent(context, ComposeActivity.class);
-        //   intent.putExtra("adapter", Parcels.wrap(tweetAdapter));
-        startActivityForResult(intent, 1); // brings up the second activity
-    }
-
     //handle clicking the compose button
     public void onComposeAction(MenuItem mi) {
         // handle click here
         Context context = getApplicationContext();
         Intent intent = new Intent(context, ComposeActivity.class);
-     //   intent.putExtra("adapter", Parcels.wrap(tweetAdapter));
         startActivityForResult(intent, 1); // brings up the second activity
     }
 
