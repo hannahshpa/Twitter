@@ -27,6 +27,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
     Tweet tweet;
     public ImageView ivProfileImage;
     public TextView tvUsername;
+    public TextView otherName;
     public TextView tvBody;
     public TextView tvTimestamp;
     public ImageButton favoriteButton;
@@ -52,6 +53,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         numRetweets = (TextView) findViewById(R.id.numRetweets);
         numFaves = (TextView) findViewById(R.id.numFaves);
         client = TwitterApp.getRestClient(getApplicationContext());
+        otherName = (TextView) findViewById(R.id.otherName);
 
         //Unwrap the tweet that is passed in via intent, using its simple name as key
         tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
@@ -64,6 +66,7 @@ public class TweetDetailsActivity extends AppCompatActivity {
         tvTimestamp.setText(tweet.relativeDate);
         numRetweets.setText(tweet.numRetweets);
         numFaves.setText(tweet.numFaves);
+        otherName.setText("@" + tweet.user.screenName);
 
         //insert profile pic using Glide
         Glide.with(getApplicationContext())

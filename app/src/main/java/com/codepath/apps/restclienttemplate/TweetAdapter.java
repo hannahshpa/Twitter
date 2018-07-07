@@ -61,6 +61,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
 
         //populate the views according to this data
         holder.tvUsername.setText(tweet.user.name);
+        holder.otherName.setText("@" + tweet.user.screenName);
         holder.tvBody.setText(tweet.body);
         holder.tvTimestamp.setText(tweet.relativeDate);
         holder.numRetweets.setText(tweet.numRetweets);
@@ -85,6 +86,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView ivProfileImage;
         public TextView tvUsername;
+        public TextView otherName;
         public TextView tvBody;
         public TextView tvTimestamp;
         public TextView numRetweets;
@@ -100,6 +102,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             //perform findViewById lookups
             ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
             tvUsername = (TextView) itemView.findViewById(R.id.tvUsername);
+            otherName = (TextView) itemView.findViewById(R.id.otherName);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
             numRetweets = (TextView) itemView.findViewById(R.id.numRetweets);

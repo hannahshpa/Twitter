@@ -19,7 +19,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="Username" />
+        android:text="Name"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvBody"
@@ -101,6 +103,15 @@
         android:text="0"
         android:textSize="16sp"
         android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/otherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tvUsername"
+        android:text="TextView" />
 
 
 </RelativeLayout>
